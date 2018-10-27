@@ -78,7 +78,7 @@ The names of the public methods must match with the actions that can be sepecifi
 All data that needs to be passed to the view can be set by using the *ViewDataService*. Calling the *_set* method you can store data as key-value-pair and access it in the view afterwards. This way you can also pass database models - which will be discussed later on - to the view and display the model's data there.
 
 ## 4. Views
-A view always needs to be a PHP file. It can contain HTML as well as PHP code. The view file *views/index/indx.php* for our example only looks like this.
+A view always needs to be a PHP file. It can contain HTML as well as PHP code. The view file *views/index/indx.php* for our example looks like this.
 
 ```php
 <h1>Homepage</h1>
@@ -109,4 +109,4 @@ Application::_renderView();
 ```
 
 As you can see the view data attribute *title*, which was set in the controller's action, is accessed and printed as the page title by using the *ViewDataService*.
-Inside the body we have a call to the application which renders the current view. In our example the *index.php* from section 4 will be included in here.
+Inside the body the current view from the application. In our example the *index.php* from section 4 will be included in here.
