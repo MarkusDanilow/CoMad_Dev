@@ -19,7 +19,26 @@ The application  will handle the entire routing itself.
 ## 2. Routing
 A URL in the CoMad framework must always match the following pattern: 
 
-***http(s)://hostname/[language]/{controller}/{view}/{identifier}***
+***http(s)://hostname/[language]/{controller}/{action}/{identifier}***
 
+The language is optional. If no language is specified, the default language defined in the *LanguageService* will be selected.
+If no controller is specified, the *IndexController* will be used. The action *index* of the corresponding controller is the default action.
+An identifier will only be necessary for requesting data. By default the object's ID will be used as a unique identifier.
 
+If the route is invalid, the *ErrorController* with is *index* action will be use instead and a 404 age is displayed.
 
+You can always get all parts of the URL by using the following static methods of the application: 
+
+```php
+// returns the current language
+Application::_getInstance()->getLanguage();
+
+// returns an instance of the current controller
+Application::_getInstance()->getController();
+
+// returns the current view as string. 
+// $useExtension specifies, whether the file extension shall be appended.
+// $useFullPath specifies, whether the entire path or only the file name of the view shall be returned.
+Application::_getInstance()->getView($useExtension = false, $useFullPath = false);
+
+```
