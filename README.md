@@ -109,4 +109,4 @@ Application::_renderView();
 ```
 
 As you can see the view data attribute *title*, which was set in the controller's action, is accessed and printed as the page title by using the *ViewDataService*.
-Inside the body the current view from the application. In our example the *index.php* from section 4 will be included in here.
+Inside the body we request the current view from the application. In our example the *index.php* from section 4 will be included in here.
