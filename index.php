@@ -7,4 +7,4 @@ use comad\core\ComadAutoloader;
 
 ComadAutoloader::register();
 
-$router = new Application();
+new Application();

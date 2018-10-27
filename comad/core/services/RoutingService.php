@@ -159,7 +159,7 @@ class RoutingService
     protected function getView($useExtension = false, $useFullPath = false)
     {
         $viewFile = ($this->isViewSet() ? $this->internalRoute[$this->isLanguageSet() ? 2 : 1] : 'index') . ($useExtension ? '.php' : '');
-        return ($useFullPath ? self::$_VIEW_DIRECTORY : '') . $viewFile;
+        return ($useFullPath ? (self::$_VIEW_DIRECTORY . '/' . $this->getController(false, false) . '/') : '') . $viewFile;
     }
 
     /**
@@ -207,6 +207,14 @@ class RoutingService
     protected function validateRoute()
     {
         if ($this->isValidRoute()) return;
+        $this->initErrorCase();
+    }
+
+    /**
+     *
+     */
+    protected function initErrorCase()
+    {
         $this->internalRoute[$this->isLanguageSet() ? 1 : 0] = 'Error';
         $this->internalRoute[$this->isLanguageSet() ? 2 : 1] = 'Index';
     }
@@ -256,6 +264,14 @@ class RoutingService
     public static function _isValidRoute()
     {
         return self::$routingInstance->isValidRoute();
+    }
+
+    /**
+     *
+     */
+    public static function _initErrorCase()
+    {
+        self::$routingInstance->initErrorCase();
     }
 
     /**
