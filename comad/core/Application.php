@@ -59,6 +59,14 @@ class Application
     }
 
     /**
+     * @return mixed|string
+     */
+    public function getLanguage()
+    {
+        return RoutingService::_getLanguage();
+    }
+
+    /**
      * @return mixed
      */
     public function getController()
@@ -74,6 +82,14 @@ class Application
     public function getView($useExtension = false, $useFullPath = false)
     {
         return RoutingService::_getView($useExtension, $useFullPath);
+    }
+
+    /**
+     * @return mixed|null
+     */
+    public function getIdentifier()
+    {
+        return RoutingService::_getIdentifier();
     }
 
     /**
