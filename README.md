@@ -67,7 +67,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        ViewDataService::_set('title', 'Home');
+        ViewDataService::_set(ViewDataService::TITLE, 'Home');
         return new ViewActionResult();
     }
 
@@ -96,7 +96,7 @@ use comad\core\services\ViewDataService;
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CoMad - <?php print ViewDataService::_get('title'); ?></title>
+    <title>CoMad - <?php print ViewDataService::_get(ViewDataService::TITLE); ?></title>
 </head>
 <body>
 
