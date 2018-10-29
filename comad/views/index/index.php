@@ -2,7 +2,15 @@
 /**
  * Copyright (c) 2018. Markus Danilow
  */
-$viewData['title'] = 'Home';
+
+use comad\core\services\ViewDataService;
+
+/** @var \comad\models\DemoModel $model */
+$model = ViewDataService::_get(ViewDataService::VIEW_MODEL);
 ?>
 
 <h1>Homepage</h1>
+
+<?php
+print $model->getId();
+?>

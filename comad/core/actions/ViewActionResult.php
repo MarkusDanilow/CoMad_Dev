@@ -25,6 +25,7 @@ class ViewActionResult implements IActionResult
     public function execute()
     {
         $this->viewPath = Application::_getInstance()->getView(true, true);
+
     }
 
     /**

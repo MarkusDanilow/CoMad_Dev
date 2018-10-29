@@ -6,8 +6,8 @@
 namespace comad\controllers;
 
 use comad\core\actions\ViewActionResult;
-use comad\core\Application;
 use comad\core\controllers\Controller;
+use comad\core\services\ViewDataService;
 
 /**
  * Class ErrorController
@@ -21,12 +21,9 @@ class ErrorController extends Controller
      */
     public function index()
     {
+        ViewDataService::_set('title', 'Page Not Found');
         return new ViewActionResult();
     }
 
-    public function er()
-    {
-        return new ViewActionResult();
-    }
 
 }

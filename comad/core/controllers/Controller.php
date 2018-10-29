@@ -21,7 +21,7 @@ class Controller
      * @param array $parameters
      * @return IActionResult
      */
-    public static function _executeAction($controller = null, $view = null, $parameters = [])
+    public static function _executeAction(Controller $controller = null, $view = null, $parameters = [])
     {
         if (!(isset($controller) && isset($view))) {
             Application::_initErrorCase();

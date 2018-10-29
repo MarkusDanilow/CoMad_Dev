@@ -48,6 +48,7 @@ class Application
      */
     public function __construct()
     {
+
         self::$applicationInstance = $this;
         $this->routingService = new RoutingService();
         $this->createController();

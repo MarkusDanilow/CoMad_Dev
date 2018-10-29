@@ -5,9 +5,10 @@
 
 namespace comad\controllers;
 
-use comad\core\actions\RedirectActionResult;
 use comad\core\actions\ViewActionResult;
 use comad\core\controllers\Controller;
+use comad\core\services\ViewDataService;
+use comad\models\DemoModel;
 
 /**
  * Class IndexController
@@ -21,8 +22,10 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return new RedirectActionResult('hello/world');
-        // return new ViewActionResult();
+        $model = new DemoModel('Gustav', '512');
+        ViewDataService::_set(ViewDataService::TITLE, 'Home');
+        ViewDataService::_set(ViewDataService::VIEW_MODEL, $model);
+        return new ViewActionResult();
     }
 
 }
