@@ -3,6 +3,13 @@
  * Copyright (c) 2018. Markus Danilow
  */
 
+namespace comad\core\data;
+
+use comad\core\Core;
+use comad\core\data\models\DatabaseModel;
+use comad\core\data\models\VersioningModel;
+use comad\core\services\RegexService;
+
 /**
  * This class automatically creates a new version of anything that is modified in the database.
  * The versions of all entries are stored in the version table inside the database.

@@ -3,8 +3,13 @@
  * Copyright (c) 2018. Markus Danilow
  */
 
+namespace comad\core\data;
+
 use comad\core\Config;
-use comad\core\services\Core;
+use comad\core\Core;
+use Exception;
+use PDO;
+use PDOStatement;
 
 /**
  * The essential class for all database requests!

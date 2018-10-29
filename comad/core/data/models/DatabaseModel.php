@@ -3,6 +3,15 @@
  * Copyright (c) 2018. Markus Danilow
  */
 
+namespace comad\core\data\models;
+
+use comad\core\data\DbContext;
+use comad\core\services\XSS_Service;
+use Exception;
+use JsonSerializable;
+use PDO;
+
+
 /**
  *
  * This class maps the data contained in a single database table and provides a list of specific database operation that can be performed for this very model.

@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * Copyright (c) 2018. Markus Danilow
+ */
+
+namespace comad\core\data;
+
+use Exception;
+use Throwable;
+
+/**
  * A custom exception in case an error occurs during a database request.
  *
  * Class DatabaseExecutionException

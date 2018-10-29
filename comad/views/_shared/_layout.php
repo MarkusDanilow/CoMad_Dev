@@ -13,6 +13,7 @@ use comad\core\services\ViewDataService;
     <title>CoMad - <?php print ViewDataService::_get(ViewDataService::TITLE); ?></title>
 
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/icon.png"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
 
 </head>
 

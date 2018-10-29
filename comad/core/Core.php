@@ -3,7 +3,9 @@
  * Copyright (c) 2018. Markus Danilow
  */
 
-namespace comad\core\services;
+namespace comad\core;
+use comad\core\services\RegexService;
+use comad\core\services\XSS_Service;
 
 
 /**
