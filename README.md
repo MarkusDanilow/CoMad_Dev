@@ -45,9 +45,10 @@ Application::_getInstance()->getView($useExtension = false, $useFullPath = false
 Application::_getInstance()->getIdentifier();
 ```
 ## Repositories and Database Models
-There is a basic repository interface called *IComadRepository* which offers the following methods to retreive and maniulate data stored in the database: 
+There is a basic repository interface called *IComadRepository* which offers the following methods to retreive and manipulate data stored in the database: 
 
-```phpinterface IComadRepository
+```php
+interface IComadRepository
 {
 
     public function find($id);
@@ -87,8 +88,8 @@ class UserRepository implements IComadRepository
     }
 }
 ```
-This is a repository for users. It extends the original functionality given by the interface by a method to get a single user by its name. The data is returned as database models. In this case a user is a *UserModel* object. 
-We have an abstract class called *DatabaseModel*. All further models need to be inherited from this class. So here is the *UserModel* class from our example.
+This is a repository for users. It extends the original functionality given by the interface by a method to get a single user by his name. The data is returned as a single or a set of database model. In this case a user is an instance of the *UserModel* class. 
+We have an abstract class called *DatabaseModel*. All further models need to be inherited from this class. Here is the *UserModel* class from our example.
 
 ```php
 class UserModel extends DatabaseModel
@@ -99,7 +100,7 @@ class UserModel extends DatabaseModel
 }
 ```
 
-All the functionality like saving or deleting data is already implemented in the abstract *DatabaseModel* class and can be used from all other models without having to overwrite the methods. When creating a new model class, all you have to do is to set the static field *tableName* to the name of the corresponding database table. All columns will be automatically accessible in the model, which means you do not have to set define the database columns as model attributes by yourself. 
+All the functionality like saving or deleting data is already implemented in the abstract *DatabaseModel* class and can be used from all other models without having to overwrite the methods. When creating a new model class, all you have to do is to set the static field *tableName* to the name of the corresponding database table. All columns will be automatically accessible in the model, which means you do not have to define the database columns as model attributes by yourself. 
 
 
 ## Controllers
@@ -120,10 +121,25 @@ class IndexController extends Controller
 {
 
     /**
-     * The index action
+     * @var UserRepository
      */
+    private $userRepo;
+
+    /**
+     * IndexController constructor.
+     */
+    public function __construct()
+    {
+        $this->userRepo = new UserRepository();
+    }
+
+    /**
+    * index action
+    */
     public function index()
     {
+        $user = $this->userRepo->findByName('dummy');
+        ViewDataService::_set(ViewDataService::VIEW_MODEL, $user);
         ViewDataService::_set(ViewDataService::TITLE, 'Home');
         return new ViewActionResult();
     }
@@ -132,7 +148,7 @@ class IndexController extends Controller
 ```
 
 The names of the public methods must match with the actions that can be sepecified in the URL. In this case the *IndexController* only has a single action named *index*. This action does nothing but return the view. This is done by using a new *ViewActionResult*. It will detect the *{actionName}.php* file in the corresponding view directory *views/{controllerName}/*. 
-All data that needs to be passed to the view can be set by using the *ViewDataService*. Calling the *_set* method you can store data as key-value-pair and access it in the view afterwards. This way you can also pass database models - which will be discussed later on - to the view and display the model's data there.
+All data that needs to be passed to the view can be set by using the *ViewDataService*. Calling the *_set* method you can store data as key-value-pair and access it in the view afterwards. In our example we define the views page title by using the predefined key *ViewDataService::TITLE* and also pass a single user model to the view by using the predefined key *ViewDataService::VIEW_MODEL*. See how the *UserRepository* from the previous section is now used to retreive a single user from the database by his name. 
 
 ## Views
 A view always needs to be a PHP file. It can contain HTML as well as PHP code. The view file *views/index/indx.php* for our example looks like this.
