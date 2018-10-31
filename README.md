@@ -154,8 +154,22 @@ All data that needs to be passed to the view can be set by using the *ViewDataSe
 A view always needs to be a PHP file. It can contain HTML as well as PHP code. The view file *views/index/indx.php* for our example looks like this.
 
 ```php
+use comad\core\services\ViewDataService;
+
+$model = ViewDataService::_get(ViewDataService::VIEW_MODEL);
+
+?>
+
 <h1>Homepage</h1>
+
+<?php
+
+print $model->name;
+
+?>
 ```
+
+You can see how the *UserModel*, which was loaded in the controller, is read out again using the *ViewDataService*. Once you have the model you can access all properties of that model and use it in your view.
 
 ## Layout
 The *_layout* view is the view that will always be rendered as skeletton of the page. It can contain static elements like the header, footer or the navigation bar. It can look something like this: 
