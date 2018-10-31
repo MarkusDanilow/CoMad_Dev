@@ -154,6 +154,7 @@ All data that needs to be passed to the view can be set by using the *ViewDataSe
 A view always needs to be a PHP file. It can contain HTML as well as PHP code. The view file *views/index/indx.php* for our example looks like this.
 
 ```php
+<?php
 use comad\core\services\ViewDataService;
 
 $model = ViewDataService::_get(ViewDataService::VIEW_MODEL);
