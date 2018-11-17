@@ -201,16 +201,18 @@ Inside the body we request the current view from the application. In our example
 
 ## Annotations
 Annotations can be used to further specify the controller's actions. They can also modify or influence the default behavior of these actions. 
-An annotation is written inside a *PHPDoc Block* with a leading *'@'* symbol, like this.
+An annotation is written inside a *PHPDoc Block* with a leading *'@'* symbol, followed by square brackets, like this.
 
 ```php
 /**
 * @[annotationKey=annotationValue]
+  @[someOtherAnnotation]
 */
 public function someAction(){
     return new ViewActionResult();
 }
 ```
+There are annotations that are defined as *key-value-pairs* as well as *single-command-annotations*.
 
 ### HTTP Annotations
 HTTP Annotations are used to define the HTTP method, via which the action must be accessed. If you specify your action as an HTTP-Post action, you can no longer call the action with an HTTP-Get request. 
