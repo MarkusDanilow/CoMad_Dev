@@ -25,7 +25,7 @@ The language is optional. If no language is specified, the default language defi
 If no controller is specified, the *IndexController* will be used. The action *index* of the corresponding controller is the default action.
 An identifier will only be necessary for requesting data. By default the object's ID will be used as a unique identifier.
 
-If the route is invalid, the *ErrorController* with is *index* action will be use instead and a 404 age is displayed.
+If the route is invalid, the *ErrorController* with its *index* action will be use instead and a 404 age is displayed.
 
 You can always get all parts of the URL by using the following static methods of the application: 
 
@@ -151,7 +151,7 @@ The names of the public methods must match with the actions that can be sepecifi
 All data that needs to be passed to the view can be set by using the *ViewDataService*. Calling the *_set* method you can store data as key-value-pair and access it in the view afterwards. In our example we define the views page title by using the predefined key *ViewDataService::TITLE* and also pass a single user model to the view by using the predefined key *ViewDataService::VIEW_MODEL*. See how the *UserRepository* from the previous section is now used to retreive a single user from the database by his name. 
 
 ## Views
-A view always needs to be a PHP file. It can contain HTML as well as PHP code. The view file *views/index/indx.php* for our example looks like this.
+A view always needs to be a PHP file. It can contain HTML as well as PHP code. The view file *views/index/index.php* for our example looks like this.
 
 ```php
 <?php
@@ -206,7 +206,7 @@ An annotation is written inside a *PHPDoc Block* with a leading *'@'* symbol, fo
 ```php
 /**
 * @[annotationKey=annotationValue]
-  @[someOtherAnnotation]
+*  @[someOtherAnnotation]
 */
 public function someAction(){
     return new ViewActionResult();
@@ -220,6 +220,7 @@ HTTP Annotations are used to define the HTTP method, via which the action must b
 ```php
 class LoginController extends Controller
 {
+    /**
      * @return ViewActionResult
      * @[Http=get]
      */
