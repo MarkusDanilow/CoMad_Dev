@@ -9,6 +9,14 @@ namespace comad\core\services;
  * Class RoutingService
  * @package myria\core\services
  */
+/**
+ * Class RoutingService
+ * @package comad\core\services
+ */
+/**
+ * Class RoutingService
+ * @package comad\core\services
+ */
 class RoutingService
 {
 
@@ -41,6 +49,17 @@ class RoutingService
      * @var null
      */
     public static $_VIEW_DIRECTORY = null;
+
+
+    /**
+     * @var null
+     */
+    public static $_SHARED_VIEW_DIRECTORY = null;
+
+    /**
+     * @var null
+     */
+    public static $_HTTP_METHOD = null;
 
     /**
      * @var null
@@ -285,6 +304,8 @@ class RoutingService
         self::$_REQUEST_URI = $_SERVER['REQUEST_URI'];
         self::$_DOCUMENT_ROOT = $_SERVER['DOCUMENT_ROOT'];
         self::$_VIEW_DIRECTORY = self::$_DOCUMENT_ROOT . '/comad/views/';
+        self::$_SHARED_VIEW_DIRECTORY = self::$_VIEW_DIRECTORY . '_shared/';
+        self::$_HTTP_METHOD = strtolower($_SERVER['REQUEST_METHOD']);
     }
 
 }

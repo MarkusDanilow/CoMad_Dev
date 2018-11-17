@@ -8,6 +8,7 @@ namespace comad\core;
 use comad\core\actions\IActionResult;
 use comad\core\actions\ViewActionResult;
 use comad\core\controllers\Controller;
+use comad\core\services\AnnotationService;
 use comad\core\services\RenderingService;
 use comad\core\services\RoutingService;
 
@@ -51,6 +52,7 @@ class Application
 
         self::$applicationInstance = $this;
         $this->routingService = new RoutingService();
+        AnnotationService::_init();
         $this->createController();
         $this->tempActionResult = Controller::_executeAction($this->controller, $this->getView(), array());
         if (isset($this->tempActionResult)) {
@@ -73,6 +75,11 @@ class Application
     public function getController()
     {
         return $this->controller;
+    }
+
+    public function setController(Controller $controller)
+    {
+        $this->controller = $controller;
     }
 
     /**
@@ -119,6 +126,14 @@ class Application
         if (self::_getInstance()->tempActionResult instanceof ViewActionResult) {
             self::_getInstance()->tempActionResult->renderView();
         }
+    }
+
+    /**
+     * @param $sectionName
+     */
+    public static function _renderSection($sectionName)
+    {
+        RenderingService::renderSection($sectionName);
     }
 
     /**

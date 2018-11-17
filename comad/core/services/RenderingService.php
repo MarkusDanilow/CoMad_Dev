@@ -26,7 +26,15 @@ class RenderingService
      */
     private function baseRendering()
     {
-        require_once RoutingService::$_VIEW_DIRECTORY . '_shared/_layout.php';
+        require_once RoutingService::$_SHARED_VIEW_DIRECTORY . '_layout.php';
+    }
+
+    /**
+     * @param $sectionName
+     */
+    public static function renderSection($sectionName)
+    {
+        include_once RoutingService::$_SHARED_VIEW_DIRECTORY . $sectionName . '.php';
     }
 
 }

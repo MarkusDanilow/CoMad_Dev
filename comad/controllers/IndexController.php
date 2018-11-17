@@ -9,7 +9,6 @@ use comad\core\actions\ViewActionResult;
 use comad\core\controllers\Controller;
 use comad\core\data\repo\UserRepository;
 use comad\core\services\ViewDataService;
-use comad\models\UserModel;
 
 /**
  * Class IndexController
@@ -33,13 +32,12 @@ class IndexController extends Controller
 
     /**
      * @[Alias=Home]
+     * @[Http=get]
      */
     public function index()
     {
-
         $user = $this->userRepo->findByName('madinow');
         ViewDataService::_set(ViewDataService::VIEW_MODEL, $user);
-
         ViewDataService::_set(ViewDataService::TITLE, 'Home');
         return new ViewActionResult();
     }

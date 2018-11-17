@@ -249,4 +249,21 @@ class RegexService
         return preg_replace('#(<[^>]+) (' . $attribute . ')=".*?"#i', '$1', $subject);
     }
 
+    /**
+     * @param $methodComment
+     * @return array
+     */
+    public static function extractAnnotationsFromMethod($methodComment)
+    {
+        $matches = null;
+        self::matchesAll('#\@\[(.*)\]#', $methodComment, $matches);
+        $matches = $matches[1];
+        $annotationMap = array();
+        foreach ($matches as $match) {
+            $parts = explode('=', $match);
+            $annotationMap[$parts[0]] = sizeof($parts) > 1 ? $parts[1] : null;
+        }
+        return $annotationMap;
+    }
+
 }

@@ -1,6 +1,33 @@
 /*
  * Copyright (c) 2018. Markus Danilow
  */
-html, body {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+.row {
+    margin: 0;
+}
+
+.comad-container {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 12px;
+}
+
+.comad-container > h1,
+.comad-container > h2,
+.comad-container > h3,
+.comad-container > h4,
+.comad-container > h5,
+.comad-container > h6 {
+    margin: 15px;
+}
+
+.login-container {
+    margin-top: 100px;
+}
+
+.navbar {
+    height: 100px;
+    background: #ccc;
 }

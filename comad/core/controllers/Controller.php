@@ -7,6 +7,7 @@ namespace comad\core\controllers;
 
 use comad\core\actions\IActionResult;
 use comad\core\Application;
+use comad\core\services\AnnotationService;
 
 /**
  * Class Controller
@@ -24,16 +25,22 @@ class Controller
     public static function _executeAction(Controller $controller = null, $view = null, $parameters = [])
     {
         if (!(isset($controller) && isset($view))) {
-            Application::_initErrorCase();
-            $controller = Application::_getInstance()->getController();
-            $view = Application::_getInstance()->getView();
+            self::_initErrorCase($controller, $view);
         }
-
-        /* analyze annotations */
-        $reflector = new \ReflectionClass(get_class($controller));
-        $comment = $reflector->getMethod($view)->getDocComment();
-
+        AnnotationService::_handleAnnotations($controller, $view);
         return $controller->{$view}($parameters);
+    }
+
+    /**
+     * @param Controller|null $controller
+     * @param null $view
+     */
+    public static function _initErrorCase(Controller &$controller = null, &$view = null)
+    {
+        Application::_initErrorCase();
+        $controller = Application::_getInstance()->getController();
+        $view = Application::_getInstance()->getView();
+        Application::_getInstance()->setController($controller);
     }
 
 }
