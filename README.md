@@ -216,7 +216,6 @@ public function someAction(){
 HTTP Annotations are used to define the HTTP method, via which the action must be accessed. If you specify your action as an HTTP-Post action, you can no longer call the action with an HTTP-Get request. 
 
 ```php
-/**
 class LoginController extends Controller
 {
      * @return ViewActionResult
