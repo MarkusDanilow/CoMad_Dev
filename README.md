@@ -198,3 +198,43 @@ Application::_renderView();
 
 As you can see the view data attribute *title*, which was set in the controller's action, is accessed and printed as the page title by using the *ViewDataService*.
 Inside the body we request the current view from the application. In our example the *index.php* from section 4 will be included in here.
+
+## Annotations
+Annotations can be used to further specify the controller's actions. They can also modify or influence the default behavior of these actions. 
+An annotation is written inside a *PHPDoc Block* with a leading *'@'* symbol, like this.
+
+```php
+/**
+* @[annotationKey=annotationValue]
+*/
+public function someAction(){
+    return new ViewActionResult();
+}
+```
+
+### HTTP Annotations
+HTTP Annotations are used to define the HTTP method, via which the action must be accessed. If you specify your action as an HTTP-Post action, you can no longer call the action with an HTTP-Get request. 
+
+```php
+/**
+class LoginController extends Controller
+{
+     * @return ViewActionResult
+     * @[Http=get]
+     */
+    public function index()
+    {
+        return new ViewActionResult();
+    }
+
+    /**
+     * @return ViewActionResult
+     * @[Http=post]
+     */
+    public function login()
+    {
+        return new ViewActionResult();
+    }
+}
+```
+In the example above, the login method can only be invoke via HTTP-Post, while the index page can still be accessed via HTTP-Get.
